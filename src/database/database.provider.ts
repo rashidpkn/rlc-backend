@@ -1,8 +1,6 @@
-
 import { Sequelize } from 'sequelize-typescript';
 import { Ads } from './model/ads.entity';
 import { User } from './model/user.entity';
-
 
 export const databaseProviders = [
   {
@@ -15,10 +13,10 @@ export const databaseProviders = [
         username: 'postgres',
         password: '12345',
         database: 'rlc',
-        logging:false
+        logging: false,
       });
-      sequelize.addModels([User,Ads]);
-      await sequelize.sync({force:true});
+      sequelize.addModels([User, Ads]);
+      await sequelize.sync({ alter: true });
       return sequelize;
     },
   },
