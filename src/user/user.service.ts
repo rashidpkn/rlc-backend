@@ -10,14 +10,15 @@ export class UserService {
             const found = await User.findOne({where:{email}})
         if(found){
             return {
-                status:true,
-                reason:'User is created'
+                status:false,
+                reason:'User already exist'
             }
         }else{
             await User.create({username,email,password})
+            
             return {
-                status:false,
-                reason:'User already exist'
+                status:true,
+                reason:'User is created'
             }
         }
         } catch (error) {
@@ -28,8 +29,26 @@ export class UserService {
         }
     }
 
-    login = async ()=>{
-
+    login = async (email:string,password:string)=>{
+        try {
+            const found = await User.findOne({where:{email,password}})
+            if(found){
+                return{
+                    status:true,
+                    reason:""
+                }
+            }else{
+                return{
+                    status:false,
+                    reason:"User not Exist"
+                }
+            }
+        } catch (error) {
+            return{
+                status:false,
+                reason: error.message
+            }
+        }
     }
 
     delete = async ()=>{

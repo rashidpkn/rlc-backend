@@ -15,8 +15,11 @@ export class UserController {
   }
 
   @Post('/signin')
-  login(){
-    return this.userService.login()
+  login(
+    @Body('email') email : string,
+    @Body('password') password : string
+  ){
+    return this.userService.login(email,password)
   }
 
   @Post('/delete')
