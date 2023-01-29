@@ -1,65 +1,95 @@
-import { Table, Column, Model,DataType } from 'sequelize-typescript';
+import { Table, Column, Model, DataType } from 'sequelize-typescript'
 
 @Table
-export class Ads extends Model{
+export class Ads extends Model {
+    @Column
+    adsTitle: string
+
     @Column
     username: string
 
     @Column
-    adsTitle : string
+    email: string
+
+    @Column({ type: DataType.JSON })
+    phone: {
+        code: string,
+        number: string
+    }
 
     @Column
-    region:string
+    intro: string
 
     @Column
-    localtion:string
+    location: string
 
     @Column
-    phoneNo:string
+    nationality: string
 
     @Column
-    intro : string
+    language: string
 
     @Column
-    nationality : string
-
-    @Column({type:DataType.ARRAY(DataType.STRING)})
-    language : []
-
-    @Column({type:DataType.JSON})
-    appearance : {}
+    eye: string
 
     @Column
-    socialMedia : string
+    hair: string
+
+    @Column({ type: DataType.JSON })
+    measurement: {
+        bust: string,
+        waist: string,
+        hip: string
+    }
+
+    @Column({ type: DataType.JSON })
+    socialMedia: {}
 
     @Column
-    CurrencyType : string
+    height: Number
 
-    @Column({type:DataType.JSON})
-    charge : {}
-
-    @Column({type:DataType.JSON})
-    service : {}
-    
     @Column
-    profilePhoto:string
+    weight: Number
 
-    @Column({type:DataType.ARRAY(DataType.STRING)})
+    @Column
+    age: Number
+
+    @Column
+    currencyType: string
+
+    @Column({ type: DataType.JSON })
+    outCall: {
+
+    }
+
+    @Column({ type: DataType.JSON })
+    inCall: {
+
+    }
+
+    @Column({ type: DataType.JSON })
+    service: {}
+
+    @Column
+    profilePhoto: string
+
+    @Column({ type: DataType.ARRAY(DataType.STRING) })
     gallery: []
 
-    
-    @Column({defaultValue:1})
-    view : Number
+    @Column({ defaultValue: 1 })
+    view: Number
 
-    
-    @Column({defaultValue:true})
-    visibility : boolean
 
-    @Column({type:DataType.JSON})
-    review : {}
+    @Column({ defaultValue: true })
+    visibility: boolean
 
-    @Column({type:DataType.JSON})
-    qna : {}
+    @Column({ type: DataType.JSON })
+    review: {}
+
+    @Column({ type: DataType.JSON })
+    qna: {}
 
 
 }
+
+console.log('Ads Table is OK')

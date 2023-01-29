@@ -3,7 +3,7 @@ import { User } from 'src/database/model/user.entity';
 
 @Injectable()
 export class UserService {
-  create = async (username: string, email: string, password: string) => {
+  create = async (username: string, email: string, password: string, role: string) => {
     try {
       const found = await User.findOne({ where: { email } });
       if (found) {
@@ -12,13 +12,13 @@ export class UserService {
           reason: 'User already exist',
         };
       } else {
-        await User.create({ username, email, password });
+        await User.create({ username, email, password, role });
 
         return {
           status: true,
           reason: 'User is created',
           token: 'asdfgjkl',
-          role: 'user',
+          role: role,
         };
       }
     } catch (error) {
@@ -38,6 +38,7 @@ export class UserService {
           reason: '',
           token: 'asdfgjkl',
           role: found.role,
+          username: found.username
         };
       } else {
         return {
@@ -54,8 +55,8 @@ export class UserService {
   };
 
   // eslint-disable-next-line @typescript-eslint/no-empty-function
-  delete = async () => {};
+  delete = async () => { };
 
   // eslint-disable-next-line @typescript-eslint/no-empty-function
-  verify = async () => {};
+  verify = async () => { };
 }
