@@ -12,7 +12,7 @@ export const databaseProviders = [
         port: 5432,
         username: 'postgres',
         password: '12345',
-        database: 'rlc',
+        database: 'newrlc',
         logging: false,
       });
       sequelize.addModels([User, Ads]);

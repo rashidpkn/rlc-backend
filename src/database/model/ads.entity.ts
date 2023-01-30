@@ -1,3 +1,4 @@
+import { type } from 'os'
 import { Table, Column, Model, DataType } from 'sequelize-typescript'
 
 @Table
@@ -17,7 +18,7 @@ export class Ads extends Model {
         number: string
     }
 
-    @Column
+    @Column({ type: DataType.STRING(2000) })
     intro: string
 
     @Column
@@ -43,7 +44,9 @@ export class Ads extends Model {
     }
 
     @Column({ type: DataType.JSON })
-    socialMedia: {}
+    socialMedia: {
+        website: ''
+    }
 
     @Column
     height: Number
