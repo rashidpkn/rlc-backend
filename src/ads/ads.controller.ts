@@ -79,4 +79,16 @@ export class AdsController {
     }
   }
 
+  @Post('vacation')
+  async vacation(
+    @Body('id') id:number,
+    @Body('vacation') vacation:boolean
+  ){
+    await Ads.update({vacation},{where:{id}})
+    return {
+      status: true,
+      reason: 'Vacation Updated'
+    }
+  }
+
 }

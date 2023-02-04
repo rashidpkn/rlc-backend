@@ -1,4 +1,3 @@
-import { type } from 'os'
 import { Table, Column, Model, DataType } from 'sequelize-typescript'
 
 @Table
@@ -85,6 +84,9 @@ export class Ads extends Model {
 
     @Column({ defaultValue: true })
     visibility: boolean
+
+    @Column({defaultValue:false})
+    vacation : boolean
 
     @Column({ type: DataType.JSON })
     review: {}

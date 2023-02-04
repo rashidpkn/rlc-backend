@@ -1,5 +1,5 @@
 import { Controller, Get, Post, UploadedFile, UseInterceptors } from '@nestjs/common';
-import { UploadedFiles } from '@nestjs/common/decorators';
+import { Query, UploadedFiles } from '@nestjs/common/decorators';
 import { FileInterceptor } from '@nestjs/platform-express/multer';
 import { FilesInterceptor } from '@nestjs/platform-express/multer/interceptors';
 import { AppService } from './app.service';
@@ -8,6 +8,8 @@ import { AppService } from './app.service';
 @Controller()
 export class AppController {
   constructor(private readonly appService: AppService) { }
+
+
 
   @Post('upload/profile')
   @UseInterceptors(FileInterceptor('profile'))
