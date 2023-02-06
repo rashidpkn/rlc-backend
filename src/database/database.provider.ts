@@ -1,5 +1,6 @@
 import { Sequelize } from 'sequelize-typescript';
 import { Ads } from './model/ads.entity';
+import { Analytics } from './model/analytics.entity';
 import { User } from './model/user.entity';
 
 export const databaseProviders = [
@@ -15,7 +16,7 @@ export const databaseProviders = [
         database: 'newrlc',
         logging: false,
       });
-      sequelize.addModels([User, Ads]);
+      sequelize.addModels([User, Ads,Analytics]);
       await sequelize.sync({ alter: true });
       return sequelize;
     },

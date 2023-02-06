@@ -91,4 +91,28 @@ export class AdsController {
     }
   }
 
+  @Post('write-review')
+  async writeReview(
+    @Body('id') id:number,
+    @Body('username') username:string,
+    @Body('rating') rating:number,
+    @Body('title') title:string,
+    @Body('desc') desc : string
+  ){
+    return this.adsService.writeReview(id,username,rating,title,desc)
+  }
+
+  @Post('ask-question')
+  async askQuestion(
+    @Body('id') id:number,
+    @Body('username') username:string,
+    @Body('question') question:string,
+  ){
+    const found = await Ads.findOne({where:{id}})
+    if(found){
+      await Ads.update({qna:[...found.qna,{username,question}]},{where:{id}})
+    }
+    return true
+  }
+
 }

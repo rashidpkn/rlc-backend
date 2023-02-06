@@ -88,11 +88,35 @@ export class Ads extends Model {
     @Column({defaultValue:false})
     vacation : boolean
 
-    @Column({ type: DataType.JSON })
-    review: {}
+    @Column({ type: DataType.ARRAY(DataType.JSON),defaultValue:[] })
+    review: [
+        {
+            username:string,
+            rating:number
+            title:string,
+            desc:string
+        }
+    ]
 
-    @Column({ type: DataType.JSON })
-    qna: {}
+    @Column({ type: DataType.ARRAY(DataType.JSON),defaultValue:[] })
+    qna: [
+        {
+            username:string,
+            question:string,
+            answer:string
+        }
+    ]
+
+    @Column({
+        type :DataType.ARRAY(DataType.JSON),
+        defaultValue: []
+    })
+    analytics:[
+        {
+            date:string,
+            view : number
+        }
+    ]
 
 
 }

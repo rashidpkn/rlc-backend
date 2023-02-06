@@ -8,6 +8,7 @@ import { diskStorage } from 'multer';
 import { AdsModule } from './ads/ads.module';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
+import { AnalyticsModule } from './analytics/analytics.module';
 
 const storage = diskStorage({
   destination(req, file, cb) {
@@ -36,6 +37,8 @@ const Multer = MulterModule.register({
     ServeStaticModule.forRoot({
       rootPath: join(process.mainModule['path'], '../build')
     }),
+
+    AnalyticsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
