@@ -22,7 +22,8 @@ export class AnalyticsService {
     async addAnalytics(id: Number) {
         const dates = new Date()
         const date = `${dates.getDate()}-${dates.getMonth() + 1}-${dates.getFullYear()}`
-        let adsAnalytics = (await Ads.findOne({ where: { id } })).analytics
+        const found = (await Ads.findOne({ where: { id } }))
+        let adsAnalytics = found.analytics
         if (adsAnalytics.find(e => e.date === date)) {
             const index = adsAnalytics.findIndex(e => e.date === date)
             adsAnalytics[index].view = adsAnalytics[index].view + 1

@@ -17,7 +17,7 @@ export const databaseProviders = [
         logging: false,
       });
       sequelize.addModels([User, Ads, Analytics]);
-      await sequelize.sync({ force: true });
+      await sequelize.sync({ alter: true });
       return sequelize;
     },
   },

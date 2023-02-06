@@ -1,3 +1,5 @@
+// eslint-disable @typescript-eslint/ban-types //
+/* eslint-disable prettier/prettier */
 import { Table, Column, Model, DataType } from 'sequelize-typescript';
 
 @Table
@@ -48,13 +50,13 @@ export class Ads extends Model {
   };
 
   @Column
-  height: Number;
+  height: number;
 
   @Column
-  weight: Number;
+  weight: number;
 
   @Column
-  age: Number;
+  age: number;
 
   @Column
   currencyType: string;
@@ -75,7 +77,7 @@ export class Ads extends Model {
   gallery: [];
 
   @Column({ defaultValue: 1 })
-  view: Number;
+  view: number;
 
   @Column({ defaultValue: true })
   visibility: boolean;
