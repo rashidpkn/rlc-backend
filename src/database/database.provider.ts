@@ -13,11 +13,11 @@ export const databaseProviders = [
         port: 5432,
         username: 'postgres',
         password: '12345',
-        database: 'newrlc',
+        database: 'test',
         logging: false,
       });
-      sequelize.addModels([User, Ads,Analytics]);
-      await sequelize.sync({ alter: true });
+      sequelize.addModels([User, Ads, Analytics]);
+      await sequelize.sync({ force: true });
       return sequelize;
     },
   },
