@@ -8,6 +8,7 @@ export class AnalyticsService {
     async add() {
         const dates = new Date()
         const date = `${dates.getDate()}-${dates.getMonth() + 1}-${dates.getFullYear()}`
+        // const date = '10-3-2023'
         const found = await Analytics.findOne({ where: { date } })
         if (found) {
             Analytics.increment('view', { by: 1, where: { date } })
