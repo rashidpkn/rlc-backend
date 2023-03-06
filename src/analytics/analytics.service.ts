@@ -1,5 +1,4 @@
 import { Injectable } from '@nestjs/common';
-import { where } from 'sequelize';
 import { Ads } from 'src/database/model/ads.entity';
 import { Analytics } from 'src/database/model/analytics.entity';
 
