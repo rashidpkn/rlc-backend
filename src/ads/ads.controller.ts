@@ -1,6 +1,6 @@
-import { Controller } from '@nestjs/common';
+import { Controller, HttpException, HttpStatus } from '@nestjs/common';
 import { Delete, Get, Post } from '@nestjs/common/decorators/http/request-mapping.decorator';
-import { Body, Query } from '@nestjs/common/decorators/http/route-params.decorator';
+import { Body, Query, Req } from '@nestjs/common/decorators/http/route-params.decorator';
 import { Ads } from 'src/database/model/ads.entity';
 import { AdsService } from './ads.service';
 
@@ -39,11 +39,21 @@ export class AdsController {
   }
 
   @Get('get-by-id')
-  getById(
+  async getById(
     @Query('id') id: number
   ) {
-    Ads.increment('view', { by: 1, where: { id } },)
-    return Ads.findOne({ where: { id } })
+    try {
+      if(!isNaN(id)){
+
+        await Ads.increment('view', { by: 1, where: { id } },)
+        return await Ads.findOne({ where: { id } })
+      }
+      else throw new HttpException('UNPROCESSABLE_ENTITY',HttpStatus.UNPROCESSABLE_ENTITY)
+      
+    } catch (error) {
+      throw new HttpException('UNPROCESSABLE_ENTITY',HttpStatus.UNPROCESSABLE_ENTITY)
+    }
+    
   }
 
   @Post('delete')
@@ -113,6 +123,22 @@ export class AdsController {
       await Ads.update({qna:[...found.qna,{username,question}]},{where:{id}})
     }
     return true
+  }
+
+  @Post('edit')
+  async edit(@Body() body :any){
+    
+      const {id,edit} = body
+
+      try {
+        
+        await Ads.update({...edit} , {where:{id}})
+        return true
+      } catch (error) {
+        console.log(error.message);
+        return false
+      }
+
   }
 
 }

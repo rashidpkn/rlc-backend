@@ -9,6 +9,10 @@ import { AdsModule } from './ads/ads.module';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import { AnalyticsModule } from './analytics/analytics.module';
+import { ReportModule } from './report/report.module';
+import { BannerModule } from './banner/banner.module';
+import { VerifyModule } from './verify/verify.module';
+import { BlacklistModule } from './blacklist/blacklist.module';
 
 const storage = diskStorage({
   destination(req, file, cb) {
@@ -39,6 +43,14 @@ const Multer = MulterModule.register({
     }),
 
     AnalyticsModule,
+
+    ReportModule,
+
+    BannerModule,
+
+    VerifyModule,
+
+    BlacklistModule,
   ],
   controllers: [AppController],
   providers: [AppService],

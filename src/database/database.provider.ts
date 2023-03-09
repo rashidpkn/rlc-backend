@@ -1,6 +1,9 @@
 import { Sequelize } from 'sequelize-typescript';
 import { Ads } from './model/ads.entity';
 import { Analytics } from './model/analytics.entity';
+import { Banners } from './model/banner.entity';
+import { Blacklist } from './model/blacklist.entity';
+import { Report } from './model/reportedProfile.entity';
 import { User } from './model/user.entity';
 
 export const databaseProviders = [
@@ -13,11 +16,11 @@ export const databaseProviders = [
         port: 5432,
         username: 'postgres',
         password: '12345',
-        database: 'rlc',
+        database: 'test',
         logging: false,
       });
-      sequelize.addModels([User, Ads, Analytics]);
-      await sequelize.sync({ alter: true });
+      sequelize.addModels([User, Ads, Analytics,Report,Banners,Blacklist]);
+      await sequelize.sync({ alter:true });
       return sequelize;
     },
   },

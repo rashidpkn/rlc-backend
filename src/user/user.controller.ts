@@ -1,4 +1,5 @@
-import { Controller, Post, Body } from '@nestjs/common';
+import { Controller, Post, Body, Get } from '@nestjs/common';
+import { User } from 'src/database/model/user.entity';
 import { UserService } from './user.service';
 
 @Controller('user')
@@ -31,6 +32,11 @@ export class UserController {
   @Post('/verify')
   Verify() {
     return this.userService.verify()
+  }
+
+  @Get('')
+  getAllUsers(){
+    return User.findAll()
   }
 
 }

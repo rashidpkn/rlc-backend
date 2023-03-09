@@ -19,6 +19,10 @@ export class User extends Model {
     @Column({ defaultValue: false })
     verified: boolean
 
+    @Column({defaultValue:0})
+    credit:number
+
+
 }
 
 console.log('User Table is OK')

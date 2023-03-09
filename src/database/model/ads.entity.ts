@@ -44,9 +44,15 @@ export class Ads extends Model {
     hip: string;
   };
 
-  @Column({ type: DataType.JSON })
+  @Column({ type: DataType.JSON,defaultValue:{} })
   socialMedia: {
-    website: '';
+    video:string,
+    website:string,
+    instagram:string,
+    twitter:string,
+    telegram:string,
+    facebook:string,
+    tiktok:string
   };
 
   @Column
@@ -86,13 +92,13 @@ export class Ads extends Model {
   vacation: boolean;
 
   @Column({ type: DataType.ARRAY(DataType.JSON), defaultValue: [] })
-  review: [
+  review:[
     {
       username: string;
       rating: number;
       title: string;
       desc: string;
-    },
+    }
   ];
 
   @Column({ type: DataType.ARRAY(DataType.JSON), defaultValue: [] })
@@ -114,6 +120,17 @@ export class Ads extends Model {
       view: number;
     },
   ];
+
+  @Column({defaultValue:false})
+  verify:boolean
+
+  @Column({defaultValue:false})
+  verificationRequest:boolean
+
+  @Column
+  verificationImage:string
+
+
 }
 
 console.log('Ads Table is OK');
