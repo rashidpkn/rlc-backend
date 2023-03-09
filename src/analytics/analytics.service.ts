@@ -31,7 +31,7 @@ export class AnalyticsService {
         } 
         else {
             Ads.update({
-                analytics: [{
+                analytics: [...adsAnalytics,{
                         date,
                         view: 1
                     }]
