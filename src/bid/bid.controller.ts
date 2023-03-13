@@ -52,8 +52,8 @@ export class BidController {
         if (largestBidAmount < amount) {
           await Bid.update({
             bid: [...bid, { amount, adsTitle }],
+            baseAmount: largestBidAmount + 10,
             largestBidAmount: amount,
-            baseAmount: baseAmount + 10
           },
             { where: { id } })
 
