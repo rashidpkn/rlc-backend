@@ -129,7 +129,9 @@ export class Ads extends Model {
 
   @Column
   verificationImage:string
-
+   
+  @Column({defaultValue:'none'})
+  tier : string
 
 }
 

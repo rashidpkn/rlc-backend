@@ -13,6 +13,7 @@ import { ReportModule } from './report/report.module';
 import { BannerModule } from './banner/banner.module';
 import { VerifyModule } from './verify/verify.module';
 import { BlacklistModule } from './blacklist/blacklist.module';
+import { BidModule } from './bid/bid.module';
 
 const storage = diskStorage({
   destination(req, file, cb) {
@@ -51,6 +52,8 @@ const Multer = MulterModule.register({
     VerifyModule,
 
     BlacklistModule,
+
+    BidModule,
   ],
   controllers: [AppController],
   providers: [AppService],
